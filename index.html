@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCP Creator | jakublabs.xyz</title>
+    <link rel="stylesheet" href="styles.css?v=3" />
+  </head>
+  <body>
+    <main class="scp-page" aria-labelledby="page-title">
+      <section class="intro">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>SCP Creator</span>
+        </div>
+        <h1 id="page-title">SCP Creator</h1>
+        <p class="lede">make your own SCP entry, validate the number, then render it as a classified document PNG</p>
+      </section>
+
+      <section class="workspace">
+        <form class="panel editor" id="scp-form">
+          <div class="field-row">
+            <label>
+              <span>SCP number</span>
+              <input id="scp-number" type="number" min="1" max="99999" value="10000" required />
+            </label>
+            <label>
+              <span>object class</span>
+              <select id="object-class">
+                <option>Safe</option>
+                <option selected>Euclid</option>
+                <option>Keter</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="validation-card" id="number-status" aria-live="polite"></div>
+
+          <label>
+            <span>item name</span>
+            <input id="scp-name" type="text" value="Shqipe" maxlength="80" required />
+          </label>
+
+          <div class="field-row">
+            <label>
+              <span>clearance level</span>
+              <select id="clearance">
+                <option>Level 1</option>
+                <option>Level 2</option>
+                <option selected>Level 3</option>
+                <option>Level 4</option>
+                <option>Level 5</option>
+              </select>
+            </label>
+            <label>
+              <span>site</span>
+              <input id="site" type="text" value="Site-19" maxlength="40" />
+            </label>
+          </div>
+
+          <label>
+            <span>special containment procedures</span>
+            <textarea id="containment" rows="7" required>SCP-10000 is to be kept inside a reinforced residential testing chamber fitted with three inward-opening doors and one false exterior wall. No personnel are to knock on any surface within the chamber unless wearing --approved dampening equipment-- because shqipes can be very agressive when --serbia-- is mentioned.</textarea>
+          </label>
+
+          <label>
+            <span>description</span>
+            <textarea id="description" rows="8" required>SCP-10000 is a shqipe. It comes from Albania and its unknown why it is actually here. We do love Shqipe tho, and hes pretty chill haha</textarea>
+          </label>
+
+          <label>
+            <span>addendum</span>
+            <textarea id="addendum" rows="6">Testing confirms SCP-10000 becomes increasingly aggressive when --serbia-- or --kosovo-- is mentioned.</textarea>
+          </label>
+
+          <div class="actions">
+            <button class="button button-light" type="submit">Render PNG</button>
+            <a class="button button-dark" id="download" href="#" download="scp-document.png">Download</a>
+          </div>
+        </form>
+
+        <section class="panel preview">
+          <div class="preview-header">
+            <div>
+              <p class="kicker">render preview</p>
+              <h2>classified document</h2>
+            </div>
+            <span id="preview-badge">VALID</span>
+          </div>
+          <canvas id="scp-canvas" width="1200" height="1600" aria-label="Rendered SCP document"></canvas>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js?v=3"></script>
+  </body>
+</html>
