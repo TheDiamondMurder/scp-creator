@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "updated": "2026-05-12",
+  "sourceNotes": [
+    "Static conservative validation for custom SCP creation.",
+    "Official SCP Foundation series pages list established series from SCP-001 through SCP-9999, with Series 10 active from SCP-9000 upward.",
+    "This file blocks the long-established published ranges and known early Series 10 entries. Numbers in active higher Series 10 ranges should still be checked manually before public posting."
+  ],
+  "blockedRanges": [
+    {
+      "start": 1,
+      "end": 8999,
+      "reason": "This number is inside the established official SCP-001 to SCP-8999 catalogue range."
+    },
+    {
+      "start": 9000,
+      "end": 9006,
+      "reason": "This number is listed in Series 10 as an existing SCP entry."
+    }
+  ],
+  "warningRanges": [
+    {
+      "start": 9007,
+      "end": 9999,
+      "reason": "Series 10 is active. This number may become occupied, so double-check the SCP Wiki if you plan to share it seriously."
+    }
+  ]
+}
