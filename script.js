@@ -182,25 +182,39 @@ function drawRedaction(x, y, width, height) {
   ctx.fillRect(x, y, width, height);
 }
 
-function drawPlaceholderLogo(x, y, size) {
-  const center = x + size / 2;
-  const middle = y + size / 2;
+function drawScpLogo(x, y, size) {
+  const scale = size / 135;
+  const outer = new Path2D("m51.9 11.9h31.7l3.07 11.4.944.391c19.4 8.03 32 26.9 32 47.9 0 2.26-.149 4.53-.445 6.77l-.133 1.01 8.37 8.37-15.8 27.4-11.4-3.06-.809.623c-9.06 6.95-20.2 10.7-31.6 10.7-11.4 6e-5-22.5-3.77-31.6-10.7l-.81-.623-11.4 3.06-15.8-27.4 8.37-8.37-.133-1.01c-.296-2.25-.445-4.51-.445-6.77.000141-21 12.6-39.9 32-47.9l.944-.391z");
+  const arrow = new Path2D("m64.7 30.6v24h-5.08l8.08 14 8.08-14h-5.08l-.000265-24h-5.99");
+
+  function fillArrow(rotation) {
+    ctx.save();
+    ctx.translate(67.7, 71.5);
+    ctx.rotate(rotation);
+    ctx.translate(-67.7, -71.5);
+    ctx.fill(arrow);
+    ctx.restore();
+  }
+
   ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
   ctx.strokeStyle = "#171512";
   ctx.fillStyle = "#171512";
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+
+  ctx.lineWidth = 4;
+  ctx.stroke(outer);
+
   ctx.lineWidth = 6;
   ctx.beginPath();
-  ctx.arc(center, middle, size * 0.43, 0, Math.PI * 2);
+  ctx.arc(67.7, 71.5, 33, 0, Math.PI * 2);
   ctx.stroke();
-  ctx.beginPath();
-  ctx.arc(center, middle, size * 0.18, 0, Math.PI * 2);
-  ctx.stroke();
-  ctx.font = "900 15px Arial, sans-serif";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText("SCP", center, middle);
-  ctx.textAlign = "left";
-  ctx.textBaseline = "alphabetic";
+
+  fillArrow(0);
+  fillArrow((Math.PI * 2) / 3);
+  fillArrow((Math.PI * 4) / 3);
   ctx.restore();
 }
 
@@ -212,7 +226,7 @@ function renderDocument() {
   ctx.fillRect(70, 72, 1060, 13);
   ctx.fillRect(70, 1510, 1060, 6);
 
-  drawPlaceholderLogo(70, 96, 82);
+  drawScpLogo(70, 96, 82);
 
   ctx.font = "900 32px Arial, sans-serif";
   ctx.fillText("SECURE. CONTAIN. PROTECT.", 170, 132);
